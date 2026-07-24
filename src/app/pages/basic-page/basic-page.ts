@@ -1,5 +1,6 @@
 import { DatePipe, LowerCasePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
+import { LocaleService, SupportedLocale } from '../../services/locale.service';
 
 @Component({
   selector: 'app-basic-page',
@@ -8,6 +9,10 @@ import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/cor
 
 })
 export default class BasicPage {
+
+  localeService = inject(LocaleService)
+  currentLocale = this.localeService.getLocale
+
   nameLower = signal('rafael')
   nameUpper = signal('RAFAEL')
   fullName = signal('rAfAel boTELla')
@@ -17,7 +22,6 @@ export default class BasicPage {
   clockTickEffect = effect( (onCleanUp) => {
     const interval = setInterval(() => {
       this.customDate.set( new Date() )
-      console.log('tick');
     }, 1000);
 
     onCleanUp( () => clearInterval(interval) )
