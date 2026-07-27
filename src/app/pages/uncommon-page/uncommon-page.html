@@ -1,1 +1,49 @@
-<p>uncommon-page works!</p>,
+<section class="mx-5 my-3">
+
+  <h1 class="text-3xl font-bold">Uncommon pipes</h1>
+  <h3 class="text-2xl" >Built-in Angular "not-so-common" pipes</h3>
+
+</section>
+
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+
+ <app-card title="i18nSelectPipe">
+  <p>Contenido desde el componente padre</p>
+  <p>{{activeClient().gender | i18nSelect:welcomeMap}} {{activeClient().name}}</p>
+  <button class="btn btn-primary" (click)="changeClient()" >
+    Cambiar cliente
+  </button>
+ </app-card>
+
+ <app-card title="i18nPluralPipe">
+  <p> {{ clients().length | i18nPlural:clientsMap }} </p>
+  <button class="btn btn-primary" (click)="deleteClient()" [disabled]="clients().length === 0" >
+    Borrar cliente
+  </button>
+
+ </app-card>
+
+ <app-card title="slicePipe">
+  <b class="mx-2">Original:</b>
+  <p class="text-wrap" >
+    {{clients().join(', ')}}
+  </p>
+
+  <b class="mx-2">Slice:0:2</b>
+  <p class="text-wrap" >
+    {{clients() | slice:0:2}}
+  </p>
+
+  <b class="mx-2">Slice:1:3</b>
+  <p class="text-wrap" >
+    {{clients() | slice:1:3}}
+  </p>
+
+  <b class="mx-2">Slice:0:-3</b>
+  <p class="text-wrap" >
+    {{clients() | slice:0:-3}}
+  </p>
+
+ </app-card>
+
+</div>
