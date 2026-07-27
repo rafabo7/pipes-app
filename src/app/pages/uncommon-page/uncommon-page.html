@@ -46,4 +46,19 @@
 
  </app-card>
 
+ <app-card title="JsonPipe">
+  <!-- JsonPipe es para renderizar objetos como código, una especie de toString -->
+
+
+  <p>Sin JsonPipe</p>
+  <pre class="text-accent">{{clients()}}</pre>
+
+  <p>Con JsonPipe</p>
+  <pre class="text-accent">{{clients() | json}}</pre>
+  <pre class="text-accent">{{activeClient() | json }}</pre>
+
+
+
+ </app-card>
+
 </div>
