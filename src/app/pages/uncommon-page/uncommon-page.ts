@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { Card } from "../../components/card/card";
-import { I18nPluralPipe, I18nSelectPipe, JsonPipe, SlicePipe } from '@angular/common';
+import { AsyncPipe, I18nPluralPipe, I18nSelectPipe, JsonPipe, KeyValuePipe, SlicePipe, TitleCasePipe } from '@angular/common';
+import { interval } from 'rxjs';
 
 const client1 = {
   name: 'Fernando',
@@ -16,11 +17,15 @@ const client2 = {
 @Component({
   selector: 'app-uncommon-page',
   imports: [
+    AsyncPipe,
     Card,
     I18nSelectPipe,
     I18nPluralPipe,
+    JsonPipe,
+    KeyValuePipe,
     SlicePipe,
-    JsonPipe],
+    TitleCasePipe,
+  ],
   templateUrl: './uncommon-page.html',
 })
 export default class UncommonPage {
@@ -48,6 +53,15 @@ export default class UncommonPage {
     other: 'Hay # clientes esperando delante de tí',
   }
 
+  // keyValuePipe sirve para convertir un objeto, en un iterable de elementos con dos propiedades, key para el nombre de la prop, value para el valor. Es otra forma de renderizar objetos
+  profile = {
+    name: 'Agapito',
+    age: 28,
+    interests: ['Sports', 'Chemistry'],
+    location: 'Germany'
+
+  }
+
   changeClient() {
     if (this.activeClient() === client1) {
       this.activeClient.set(client2)
@@ -59,4 +73,14 @@ export default class UncommonPage {
   deleteClient() {
     this.clients.update( prev => prev.slice(1) )
   }
+
+  // asyncPipe espera y renderiza un valor, tambien puede suscribirse, esperar, renderizar y matar cuando salimos de la pagina un observalbe
+  promiseValue : Promise<string> = new Promise( (resolve, reject) => {
+    setTimeout(() => {
+      resolve('Tenemos datos en la promesa')
+      console.log('Promesa finalizada')
+    }, 3000);
+  })
+
+  myObservable = interval(2000)
 }

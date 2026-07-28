@@ -61,4 +61,25 @@
 
  </app-card>
 
+ <app-card title="KeyValue">
+  <!-- <pre class="text-accent" >{{profile | keyvalue | json}}</pre> -->
+   <ul>
+    @for (item of profile | keyvalue; track $index) {
+      <li>
+        <strong class="text-secondary" >{{item.key | titlecase }}:</strong>
+        <span class="text-primary">
+          {{item.value}}
+        </span>
+      </li>
+    }
+   </ul>
+ </app-card>
+
+ <app-card title="AsyncPipe">
+  <p>{{promiseValue | async}}</p>
+
+  <p class="card-title">Observable</p>
+  <p>Valor del observable: <span class="text-accent font-bold">{{myObservable | async}}</span></p>
+ </app-card>
+
 </div>
