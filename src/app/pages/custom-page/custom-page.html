@@ -1,1 +1,66 @@
-<p>custom-page works!</p>,
+<section class="mx-5">
+
+  <h1 class="text-3xl font-bold">Custom Pipes</h1>
+  <h3 class="text-2xl" >A few custom pipes examples</h3>
+  <p class="text-xl italic">Not included in Angular</p>
+
+</section>
+
+
+<div class="stats shadow">
+  <div class="stat">
+    <div class="stat-title">ToggleCasePipe</div>
+    <div class="stat-value">{{ name() | toggleCase : upperCase() }}</div>
+    <div class="stat-desc">Original: {{name()}}</div>
+    <button class="btn btn-primary btn-outline w-60" (click)="changeUpperCase()" >Change toggle</button>
+  </div>
+</div>
+
+<div class="divider mt-2"></div>
+
+<section>
+  <h1 class="text-2xl font-bold" >Pipes personalizados en accion</h1>
+  <div class="flex gap-6 justify-end w-full">
+    <div class="flex gap-2 justify-end items-center">
+      <span>Order by:</span>
+      <button class="btn btn-outline btn-primary">Name</button>
+      <button class="btn btn-outline btn-accent">Creator</button>
+      <button class="btn btn-outline btn-info">Color</button>
+    </div>
+    <div class="flex gap-2 justify-end items-center">
+      <span>Apply filter:</span>
+      <button class="btn btn-warning">Show flying</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="overflow-x-auto w-full">
+  <table class="table table-xs w-full">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Can fly</th>
+        <th>Color</th>
+        <th>Creator</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- row 1 -->
+
+      @for (hero of heros(); track hero.id; let i = $index) {
+
+        <tr>
+          <th>{{i+1}}</th>
+          <td>{{hero.name}}</td>
+          <td>{{hero.canFly}}</td>
+          <td>{{hero.color}}</td>
+          <td>{{hero.creator}}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</section>
+
