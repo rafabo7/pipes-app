@@ -10,6 +10,10 @@
         },
         "angular-page": {
           "skipChangeDetectionOnPush": true
+        },
+        "angular-pipe": {
+          "fileNameSuffix": ".pipe",
+          "suffix": ".pipe"
         }
     }
 }

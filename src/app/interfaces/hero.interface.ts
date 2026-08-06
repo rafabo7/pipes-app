@@ -20,7 +20,7 @@ export interface Hero {
 
 export const ColorMap = {
   [Color.red]: '#E57373',
-  [Color.black]: '#424242',
+  [Color.black]: '#AAA',
   [Color.blue]: '#64B5F6',
   [Color.green]: '#81C784',
 };
